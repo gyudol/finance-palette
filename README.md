@@ -16,8 +16,8 @@
 <table>
   <tr> <th>이름</th> <th colspan="2">역할</th> <th>담당 업무</th> </tr>
   <tr> <td rowspan="3"><a href="https://github.com/gyudol" target="_blank">김규찬</a></td> <td rowspan="3">팀장</td> <td colSpan="2"><strong>프로젝트 기획 및 관리</strong></td> </tr>
-  <tr> <td><strong>백엔드 100%</strong></td> <td><sub>Apache 서버·DB 설계 및 구축, 데이터 정제·분석·가공<br> 사전조사 기능, 상품 리스트 페이지, 상품 상세 페이지, 북마크 기능</sub></td> </tr>
-  <tr> <td><strong>디자인 및 프론트엔드 40%</strong></td> <td><sub>상품 리스트 페이지, 상품 상세 페이지, 북마크 페이지</sub></td> </tr>
+  <tr> <td><strong>백엔드 100%</strong></td> <td><sub>Apache 서버·DB 설계 및 구축, 데이터 정제·분석·가공<br> 사전조사 기능, 상품 리스트 페이지, 상품 상세 페이지, 북마크 기능, 조회 기록 기능</sub></td> </tr>
+  <tr> <td><strong>디자인 및 프론트엔드 40%</strong></td> <td><sub>상품 리스트 페이지, 상품 상세 페이지, 북마크 페이지, 조회 기록 페이지</sub></td> </tr>
   <tr> <td>김보민</td> <td>팀원</td> <td><strong>디자인 및 프론트엔드 60%</strong></td> <td><sub>홈 화면, 메뉴 화면, 마이 페이지, 사전조사 화면, 로고 이미지</sub></td> </tr>
 </table>
 </div>
