@@ -13,6 +13,11 @@
 
 ## 🔴 팀원 소개
 <div align="center"> 
+<table>
+  <tr> <th>이름</th> <th>역할</th> <th>담당 업무</th> </tr>
+  <tr> <td> [김규찬](https://github.com/gyudol) </td> <td>팀장</td> <td></td> </tr>
+  <tr> <td>김보민</td> <td>팀원</td> <td></td> </tr>
+</table>
   
 | 이름 | 역할 | 담당 업무 |
 |------|------|----------------------------------------|
