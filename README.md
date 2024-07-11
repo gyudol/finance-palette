@@ -58,6 +58,6 @@
 ## 🔵 프로젝트 산출물
 - ERD
 <div align="center">
-
-![ERD_image](https://github.com/gyudol/finance-palette/assets/83599750/d97c4a29-b019-4df5-8393-6698ca840b0b)
+  
+![ERD_image](https://github.com/gyudol/finance-palette/assets/83599750/691f96ad-7084-4087-8a9b-de95017d368e)
 </div>
