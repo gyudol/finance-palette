@@ -39,7 +39,7 @@
 
 - **Language |** Java 8 (Java 1.8), XML, PHP 8.2.12 <br>
 - **Server |** Apache 2.4.58 <br>
-- **Library |** mysql-connector-j-8.2.0 <br>
+- **Library |** 'mysql-connector-j-8.2.0', 'com.google.android.gms:play-services-ads-identifier:18.0.1' <br>
 - **DB |** MySQL 8.0.15 <br>
 - **IDE |** Android Studio Giraffe 2022.3.1 Patch 2, IntelliJ IDEA 2022.2.2 Community Edition, phpMyAdmin 5.2.1 <br>
 - **API |** 금융감독원 Open API (금융회사개요 API, 정기예금상품 API, 적금상품 API, 연금저축상품 API, 주택담보대출상품 API, 전세자금대출상품 API, 개인신용대출상품 API) <br><br>
