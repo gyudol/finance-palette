@@ -59,5 +59,5 @@
 - ERD
 <div align="center">
   
-![ERD_image](https://github.com/user-attachments/assets/aed9c448-113a-48bf-981f-3c3b5221eabe)
+![ERD_image](https://github.com/user-attachments/assets/a7610844-9ebb-4ff6-b118-7265b8a85620)
 </div>
