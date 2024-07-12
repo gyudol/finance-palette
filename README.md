@@ -59,5 +59,5 @@
 - ERD
 <div align="center">
   
-![ERD_image](https://github.com/gyudol/finance-palette/assets/83599750/691f96ad-7084-4087-8a9b-de95017d368e)
+![ERD_image](https://github.com/user-attachments/assets/6060fc96-12fd-4881-8125-e215c79dfbdf)
 </div>
