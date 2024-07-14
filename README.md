@@ -18,8 +18,8 @@
   <tr> <th>이름</th> <th colspan="2">역할</th> <th>담당 업무</th> </tr>
   <tr> <td rowspan="3"><a href="https://github.com/gyudol" target="_blank">김규찬</a></td> <td rowspan="3">팀장</td> <td colSpan="2"><strong>프로젝트 기획 및 관리</strong></td> </tr>
   <tr> <td><strong>백엔드 100%</strong></td> <td><sub>Apache 서버·DB 설계 및 구축, 데이터 정제·분석·가공<br> 사전조사 기능, 상품 리스트 페이지, 상품 상세 페이지, 북마크 기능, 조회 기록 기능</sub></td> </tr>
-  <tr> <td><strong>디자인 및 프론트엔드 40%</strong></td> <td><sub>상품 리스트 페이지, 상품 상세 페이지, 북마크 페이지, 조회 기록 페이지</sub></td> </tr>
-  <tr> <td>김보민</td> <td>팀원</td> <td><strong>디자인 및 프론트엔드 60%</strong></td> <td><sub>홈 화면, 메뉴 화면, 마이 페이지, 사전조사 화면, 로고 이미지</sub></td> </tr>
+  <tr> <td><strong>디자인 및 프론트엔드 40%</strong></td> <td><sub>상품 리스트 페이지, 상품 상세 페이지, 북마크 리스트 화면, 최근 조회 기록 화면</sub></td> </tr>
+  <tr> <td>김보민</td> <td>팀원</td> <td><strong>디자인 및 프론트엔드 60%</strong></td> <td><sub>홈 화면, 메뉴 화면, 마이 페이지, 사전 조사 화면, 로고 이미지</sub></td> </tr>
 </table>
 </div>
 
@@ -54,9 +54,24 @@
 <div align="center"> 
 <table>
   <tbody align="center"> 
-    <tr> <th> 홈 화면 </th> <th> 메뉴 화면 </th> <th> 마이 페이지 </th> </tr>
-    <tr>  <td width="33%"> <img width="300" src="https://github.com/user-attachments/assets/bb89edf1-0199-45b2-bf1a-95c3e13c234f"/>
- </td> <td width="33%"></td> <td width="33%"></td> </tr>
+    <tr> <th> 홈 화면 </th> <th> 메뉴 화면 </th> <th> 마이 페이지 </th> <th> 사전 조사 화면 </th> <th> 북마크 리스트 화면 </th> <th> 최근 조회 기록 화면 </th> </tr>
+    <tr>  <td width="16.6%"><img width="100%" src="./readme-assets/home_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/menu_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/myPage_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/survey_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/bookmark_list_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/user_view_history_list_screen.png"/></td></tr>
+    <tr> <th> 정기예금 상품<br>리스트 페이지 </th> <th> 적금 상품<br>리스트 페이지 </th> <th> 연금저축 상품<br>리스트 페이지 </th> 
+      <th> 전세자금대출 상품<br>리스트 페이지 </th> <th> 주택담보대출 상품<br>리스트 페이지 </th> <th> 개인신용대출 상품<br>리스트 페이지 </th> </tr>
+    <tr>  <td width="16.6%"><img width="100%" src="./readme-assets/deposit_product_list_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/saving_product_list_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/annuity_saving_product_list_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/rent_house_loan_product_list_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/mortgage_loan_product_list_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/credit_loan_product_list_screen.png"/></td></tr>
+    <tr> <th> 정기예금 상품<br>상세 페이지 </th> <th> 적금 상품<br>상세 페이지 </th> <th> 연금저축 상품<br>상세 페이지 </th> 
+      <th> 전세자금대출 상품<br>상세 페이지 </th> <th> 주택담보대출 상품<br>상세 페이지 </th> <th> 개인신용대출 상품<br>상세 페이지 </th> </tr>
+    <tr>  <td width="16.6%"><img width="100%" src="./readme-assets/deposit_product_detail_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/saving_product_detail_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/annuity_saving_product_detail_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/rent_house_loan_product_detail_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/mortgage_loan_product_detail_screen.png"/></td> 
+      <td width="16.6%"><img width="100%" src="./readme-assets/credit_loan_product_detail_screen.png"/></td></tr>
   </tbody>
 </table>
 
@@ -72,5 +87,5 @@
 - ERD
 <div align="center">
   
-![ERD_image](https://github.com/user-attachments/assets/a7610844-9ebb-4ff6-b118-7265b8a85620)
+<img src="./readme-assets/ERD_image.png"/>
 </div>
