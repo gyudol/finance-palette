@@ -50,13 +50,25 @@
 <!-- ## 🟡 시스템 아키텍처 -->
 
 
-## 🟢 기능 소개
+## 🟢 화면 구성
+<div align="center"> 
+<table>
+  <tbody align="center"> 
+    <tr> <th> 홈 화면 </th> <th> 메뉴 화면 </th> <th> 마이 페이지 </th> </tr>
+    <tr>  <td width="33%"> <img width="300" src="https://github.com/user-attachments/assets/bb89edf1-0199-45b2-bf1a-95c3e13c234f"/>
+ </td> <td width="33%"></td> <td width="33%"></td> </tr>
+  </tbody>
+</table>
+
+</div>
+
+## 🔵 기능 소개
 <div align="center"> 
 
 
 </div>
 
-## 🔵 프로젝트 산출물
+## 🟣 프로젝트 산출물
 - ERD
 <div align="center">
   
