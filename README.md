@@ -54,24 +54,25 @@
 <div align="center"> 
 <table>
   <tbody align="center"> 
-    <tr> <th> 홈 화면 </th> <th> 메뉴 화면 </th> <th> 마이 페이지 </th> <th> 사전 조사 화면 </th> <th> 북마크 리스트 화면 </th> <th> 최근 조회 기록 화면 </th> </tr>
-    <tr>  <td width="16.6%"><img width="100%" src="./readme-assets/home_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/menu_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/myPage_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/survey_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/bookmark_list_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/user_view_history_list_screen.png"/></td></tr>
-    <tr> <th> 정기예금 상품<br>리스트 페이지 </th> <th> 적금 상품<br>리스트 페이지 </th> <th> 연금저축 상품<br>리스트 페이지 </th> 
-      <th> 전세자금대출 상품<br>리스트 페이지 </th> <th> 주택담보대출 상품<br>리스트 페이지 </th> <th> 개인신용대출 상품<br>리스트 페이지 </th> </tr>
-    <tr>  <td width="16.6%"><img width="100%" src="./readme-assets/deposit_product_list_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/saving_product_list_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/annuity_saving_product_list_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/rent_house_loan_product_list_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/mortgage_loan_product_list_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/credit_loan_product_list_screen.png"/></td></tr>
+    <tr> <th> 홈 화면 </th> <th> 메뉴 화면 </th> <th> 마이 페이지 </th> <th> 사전 조사 화면 </th> </tr>
+    <tr>  <td width="25%"><img width="100%" src="./readme-assets/home_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/menu_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/myPage_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/survey_screen.png"/></td> </tr>
+    <tr> <th> 북마크 리스트 화면 </th> <th> 최근 조회 기록 화면 </th> <th> 정기예금 상품<br>리스트 페이지 </th> <th> 적금 상품<br>리스트 페이지 </th> </tr>
+    <tr> <td width="25%"><img width="100%" src="./readme-assets/bookmark_list_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/user_view_history_list_screen.png"/></td>
+      <td width="25%"><img width="100%" src="./readme-assets/deposit_product_list_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/saving_product_list_screen.png"/></td> </tr>
+    <tr> <th> 연금저축 상품<br>리스트 페이지 </th> <th> 전세자금대출 상품<br>리스트 페이지 </th> <th> 주택담보대출 상품<br>리스트 페이지 </th> <th> 개인신용대출 상품<br>리스트 페이지 </th> </tr>
+    <tr>  <td width="25%"><img width="100%" src="./readme-assets/annuity_saving_product_list_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/rent_house_loan_product_list_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/mortgage_loan_product_list_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/credit_loan_product_list_screen.png"/></td> </tr>
     <tr> <th> 정기예금 상품<br>상세 페이지 </th> <th> 적금 상품<br>상세 페이지 </th> <th> 연금저축 상품<br>상세 페이지 </th> 
-      <th> 전세자금대출 상품<br>상세 페이지 </th> <th> 주택담보대출 상품<br>상세 페이지 </th> <th> 개인신용대출 상품<br>상세 페이지 </th> </tr>
-    <tr>  <td width="16.6%"><img width="100%" src="./readme-assets/deposit_product_detail_screen.png"/></td> <td width="16.6%"><img width="100%" src="./readme-assets/saving_product_detail_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/annuity_saving_product_detail_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/rent_house_loan_product_detail_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/mortgage_loan_product_detail_screen.png"/></td> 
-      <td width="16.6%"><img width="100%" src="./readme-assets/credit_loan_product_detail_screen.png"/></td></tr>
+      <th> 전세자금대출 상품<br>상세 페이지 </th> </tr>
+    <tr>  <td width="25%"><img width="100%" src="./readme-assets/deposit_product_detail_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/saving_product_detail_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/annuity_saving_product_detail_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/rent_house_loan_product_detail_screen.png"/></td> </tr>
+    <tr> <th> 주택담보대출 상품<br>상세 페이지 </th> <th> 개인신용대출 상품<br>상세 페이지 </th> </tr>
+    <tr> <td width="25%"><img width="100%" src="./readme-assets/mortgage_loan_product_detail_screen.png"/></td> 
+      <td width="25%"><img width="100%" src="./readme-assets/credit_loan_product_detail_screen.png"/></td> </tr>
   </tbody>
 </table>
 
