@@ -1,3 +1,4 @@
+
 <?php
 $con = mysqli_connect("localhost", "root","","fn_prod");
 
@@ -8,34 +9,34 @@ if(!$con || mysqli_connect_errno()) {
 mysqli_set_charset($con,"utf8");
 
 // EditText로 원하는 값 가져오기
-@$fin_prdt_cd = $_GET['finPrdtCd'];
-@$intrRateType = $_GET['intrRateType'];
-@$rsrvType = $_GET['rsrvType'];
+@$financial_product_id = $_GET['finPrdtId'];
+@$interest_rate_type = $_GET['intrRateType'];
+@$accrual_type = $_GET['accrualType'];
 
 $res = mysqli_query($con, "SELECT 
-sp.fin_prdt_nm, sp.join_way, sp.mtrt_int, sp.spcl_cnd, sp.join_deny, sp.join_member, sp.etc_note, sp.max_limit, 
-co.kor_co_nm, co.dcls_chrg_man, spo.intr_rate_type_nm, spo.rsrv_type_nm,
-CONCAT(sp.dcls_strt_day, IFNULL(CONCAT(' ~ ', sp.dcls_end_day), ' ~ ')) AS dcls_strt_end_day,
-MAX(CASE WHEN spo.save_trm = 1 THEN COALESCE(NULLIF(spo.intr_rate, 0), spo.intr_rate2) END) AS intr_rate_1,
-MAX(CASE WHEN spo.save_trm = 3 THEN COALESCE(NULLIF(spo.intr_rate, 0), spo.intr_rate2) END) AS intr_rate_3,
-MAX(CASE WHEN spo.save_trm = 6 THEN COALESCE(NULLIF(spo.intr_rate, 0), spo.intr_rate2) END) AS intr_rate_6,
-MAX(CASE WHEN spo.save_trm = 12 THEN COALESCE(NULLIF(spo.intr_rate, 0), spo.intr_rate2) END) AS intr_rate_12,
-MAX(CASE WHEN spo.save_trm = 24 THEN COALESCE(NULLIF(spo.intr_rate, 0), spo.intr_rate2) END) AS intr_rate_24,
-MAX(CASE WHEN spo.save_trm = 36 THEN COALESCE(NULLIF(spo.intr_rate, 0), spo.intr_rate2) END) AS intr_rate_36,
-(SELECT MAX(intr_rate2) FROM savingProductsOptions WHERE fin_prdt_cd = sp.fin_prdt_cd AND intr_rate_type = '$intrRateType' AND rsrv_type = '$rsrvType') AS intr_rate_max
-FROM savingproducts sp 
-JOIN company co ON sp.fin_co_no = co.fin_co_no 
-JOIN savingProductsOptions spo ON sp.fin_prdt_cd = spo.fin_prdt_cd 
-WHERE sp.fin_prdt_cd = '$fin_prdt_cd' AND spo.intr_rate_type = '$intrRateType' AND spo.rsrv_type = '$rsrvType';");
+sp.financial_product_name, sp.join_way, sp.interest_rate_after_maturity, sp.preferential_condition, sp.join_restriction, sp.join_target, sp.other_precaution, sp.maximum_limit, 
+c.financial_company_name, c.disclosure_officer, spo.interest_rate_type_name, spo.accrual_type_name,
+CONCAT(sp.disclosure_start_date, IFNULL(CONCAT(' ~ ', sp.disclosure_end_date), ' ~ ')) AS disclosure_start_to_end_date,
+MAX(CASE WHEN spo.saving_term = 1 THEN COALESCE(NULLIF(spo.interest_rate, 0), spo.maximum_interest_rate) END) AS interest_rate_1,
+MAX(CASE WHEN spo.saving_term = 3 THEN COALESCE(NULLIF(spo.interest_rate, 0), spo.maximum_interest_rate) END) AS interest_rate_3,
+MAX(CASE WHEN spo.saving_term = 6 THEN COALESCE(NULLIF(spo.interest_rate, 0), spo.maximum_interest_rate) END) AS interest_rate_6,
+MAX(CASE WHEN spo.saving_term = 12 THEN COALESCE(NULLIF(spo.interest_rate, 0), spo.maximum_interest_rate) END) AS interest_rate_12,
+MAX(CASE WHEN spo.saving_term = 24 THEN COALESCE(NULLIF(spo.interest_rate, 0), spo.maximum_interest_rate) END) AS interest_rate_24,
+MAX(CASE WHEN spo.saving_term = 36 THEN COALESCE(NULLIF(spo.interest_rate, 0), spo.maximum_interest_rate) END) AS interest_rate_36,
+(SELECT MAX(maximum_interest_rate) FROM savings_product_options WHERE financial_product_id = sp.financial_product_id AND interest_rate_type = '$interest_rate_type' AND accrual_type = '$accrual_type') AS highest_interest_rate
+FROM savings_products sp 
+JOIN financial_companies c ON sp.financial_company_id = c.financial_company_id 
+JOIN savings_product_options spo ON sp.financial_product_id = spo.financial_product_id 
+WHERE sp.financial_product_id = '$financial_product_id' AND spo.interest_rate_type = '$interest_rate_type' AND spo.accrual_type = '$accrual_type';");
 
 
 $result = array();
 
 while($row = mysqli_fetch_array($res)) {
-    array_push($result, array('fin_prdt_nm'=>$row[0], 'join_way'=>$row[1], 'mtrt_int'=>$row[2], 'spcl_cnd'=>$row[3], 'join_deny'=>$row[4], 
-    'join_member'=>$row[5], 'etc_note'=>$row[6], 'max_limit'=>$row[7], 'kor_co_nm'=>$row[8], 'dcls_chrg_man'=>$row[9], 'intr_rate_type_nm'=>$row[10],
-    'rsrv_type_nm'=>$row[11], 'dcls_strt_end_day'=>$row[12], 'intr_rate_1'=>$row[13], 'intr_rate_3'=>$row[14], 'intr_rate_6'=>$row[15], 'intr_rate_12'=>$row[16], 
-    'intr_rate_24'=>$row[17], 'intr_rate_36'=>$row[18], 'intr_rate_max'=>$row[19]));
+    array_push($result, array('financial_product_name'=>$row[0], 'join_way'=>$row[1], 'interest_rate_after_maturity'=>$row[2], 'preferential_condition'=>$row[3], 'join_restriction'=>$row[4], 
+    'join_target'=>$row[5], 'other_precaution'=>$row[6], 'maximum_limit'=>$row[7], 'financial_company_name'=>$row[8], 'disclosure_officer'=>$row[9], 'interest_rate_type_name'=>$row[10],
+    'accrual_type_name'=>$row[11], 'disclosure_start_to_end_date'=>$row[12], 'interest_rate_1'=>$row[13], 'interest_rate_3'=>$row[14], 'interest_rate_6'=>$row[15], 'interest_rate_12'=>$row[16], 
+    'interest_rate_24'=>$row[17], 'interest_rate_36'=>$row[18], 'highest_interest_rate'=>$row[19]));
 }
 
 echo json_encode(array("result"=>$result), JSON_UNESCAPED_UNICODE);

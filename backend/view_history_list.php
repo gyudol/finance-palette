@@ -12,126 +12,126 @@ mysqli_set_charset($con,"utf8");
 @$aaid = $_GET['aaid'];
 
 if($prdtNum == 1) {
-    $query = "SELECT dp.fin_prdt_nm, dp.fin_prdt_cd, c.kor_co_nm, MAX(dpo.intr_rate2) AS highest_intr_rate, dpo.intr_rate_type
-                FROM depositproducts dp
-                JOIN company c ON dp.fin_co_no = c.fin_co_no
-                JOIN depositproductsoptions dpo ON dp.fin_prdt_cd = dpo.fin_prdt_cd
-                JOIN userViewHistory uvh ON 
-                    dp.fin_prdt_cd = SUBSTRING_INDEX(SUBSTRING(uvh.fin_prdt_num_cd, 3), '_', 1)
-                AND dpo.intr_rate_type = SUBSTRING_INDEX(SUBSTRING_INDEX(uvh.fin_prdt_num_cd, '_', -1), '_', 1)
-                WHERE LEFT(uvh.fin_prdt_num_cd, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
-                GROUP BY dp.fin_prdt_nm, c.kor_co_nm, dpo.intr_rate_type
-                ORDER BY uvh.viewDateTime DESC;";
+    $query = "SELECT dp.financial_product_name, dp.financial_product_id, c.financial_company_name, MAX(dpo.maximum_interest_rate) AS highest_interest_rate, dpo.interest_rate_type
+                FROM deposit_products dp
+                JOIN financial_companies c ON dp.financial_company_id = c.financial_company_id
+                JOIN deposit_product_options dpo ON dp.financial_product_id = dpo.financial_product_id
+                JOIN user_view_histories uvh ON 
+                    dp.financial_product_id = SUBSTRING_INDEX(SUBSTRING(uvh.history_id, 3), '_', 1)
+                AND dpo.interest_rate_type = SUBSTRING_INDEX(SUBSTRING_INDEX(uvh.history_id, '_', -1), '_', 1)
+                WHERE LEFT(uvh.history_id, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
+                GROUP BY dp.financial_product_name, c.financial_company_name, dpo.interest_rate_type
+                ORDER BY uvh.view_date_time DESC;";
 
     $res = mysqli_query($con, $query);
     $result = array();
 
 
     while($row = mysqli_fetch_array($res)) {
-        array_push($result, array('fin_prdt_nm'=>$row[0], 'fin_prdt_cd'=>$row[1], 'kor_co_nm'=>$row[2],
-        'highest_intr_rate'=>$row[3], 'intr_rate_type'=>$row[4]));
+        array_push($result, array('financial_product_name'=>$row[0], 'financial_product_id'=>$row[1], 'financial_company_name'=>$row[2],
+        'highest_interest_rate'=>$row[3], 'interest_rate_type'=>$row[4]));
     }      
 }
 else if($prdtNum == 2) {
-    $query = "SELECT sp.fin_prdt_nm, sp.fin_prdt_cd, c.kor_co_nm, MAX(spo.intr_rate2) AS highest_intr_rate, spo.intr_rate_type, spo.rsrv_type
-          FROM savingproducts sp
-          JOIN company c ON sp.fin_co_no = c.fin_co_no
-          JOIN savingproductsoptions spo ON sp.fin_prdt_cd = spo.fin_prdt_cd
-          JOIN userViewHistory uvh ON 
-                sp.fin_prdt_cd = SUBSTRING_INDEX(SUBSTRING(uvh.fin_prdt_num_cd, 3), '_', 1)
-                AND spo.intr_rate_type = SUBSTRING_INDEX(SUBSTRING_INDEX(uvh.fin_prdt_num_cd, '_', -2), '_', 1)
-                AND spo.rsrv_type = SUBSTRING_INDEX(SUBSTRING_INDEX(uvh.fin_prdt_num_cd, '_', -1), '_', 1)
-                WHERE LEFT(uvh.fin_prdt_num_cd, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
-          GROUP BY sp.fin_prdt_nm, c.kor_co_nm, spo.intr_rate_type, spo.rsrv_type
-            ORDER BY uvh.viewDateTime DESC";
+    $query = "SELECT sp.financial_product_name, sp.financial_product_id, c.financial_company_name, MAX(spo.maximum_interest_rate) AS highest_interest_rate, spo.interest_rate_type, spo.accrual_type
+          FROM savings_products sp
+          JOIN financial_companies c ON sp.financial_company_id = c.financial_company_id
+          JOIN savings_product_options spo ON sp.financial_product_id = spo.financial_product_id
+          JOIN user_view_histories uvh ON 
+                sp.financial_product_id = SUBSTRING_INDEX(SUBSTRING(uvh.history_id, 3), '_', 1)
+                AND spo.interest_rate_type = SUBSTRING_INDEX(SUBSTRING_INDEX(uvh.history_id, '_', -2), '_', 1)
+                AND spo.accrual_type = SUBSTRING_INDEX(SUBSTRING_INDEX(uvh.history_id, '_', -1), '_', 1)
+                WHERE LEFT(uvh.history_id, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
+          GROUP BY sp.financial_product_name, c.financial_company_name, spo.interest_rate_type, spo.accrual_type
+            ORDER BY uvh.view_date_time DESC";
     
     $res = mysqli_query($con, $query);
     $result = array();
 
     while($row = mysqli_fetch_array($res)) {
-        array_push($result, array('fin_prdt_nm'=>$row[0], 'fin_prdt_cd'=>$row[1], 'kor_co_nm'=>$row[2],
-        'highest_intr_rate'=>$row[3], 'intr_rate_type'=>$row[4], 'rsrv_type'=>$row[5]));
+        array_push($result, array('financial_product_name'=>$row[0], 'financial_product_id'=>$row[1], 'financial_company_name'=>$row[2],
+        'highest_interest_rate'=>$row[3], 'interest_rate_type'=>$row[4], 'accrual_type'=>$row[5]));
     }
 }
 else if($prdtNum == 3) {
-    $query = "SELECT asp.fin_prdt_nm, asp.fin_prdt_cd, c.kor_co_nm, asp.avg_prft_rate, asp.pnsn_kind_nm
-                FROM annuitysavingproducts asp
-                JOIN company c ON asp.fin_co_no = c.fin_co_no
-                JOIN annuitysavingproductsoptions aspo ON asp.fin_prdt_cd = aspo.fin_prdt_cd
-                JOIN userViewHistory uvh ON 
-                    asp.fin_prdt_cd = SUBSTRING_INDEX(SUBSTRING(uvh.fin_prdt_num_cd, 3), '_', 1)
-                WHERE LEFT(uvh.fin_prdt_num_cd, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
-                GROUP BY asp.fin_prdt_nm, c.kor_co_nm
-                ORDER BY uvh.viewDateTime DESC";
+    $query = "SELECT asp.financial_product_name, asp.financial_product_id, c.financial_company_name, asp.average_profit_rate, asp.pension_type_name
+                FROM annuity_saving_products asp
+                JOIN financial_companies c ON asp.financial_company_id = c.financial_company_id
+                JOIN annuity_saving_product_options aspo ON asp.financial_product_id = aspo.financial_product_id
+                JOIN user_view_histories uvh ON 
+                    asp.financial_product_id = SUBSTRING_INDEX(SUBSTRING(uvh.history_id, 3), '_', 1)
+                WHERE LEFT(uvh.history_id, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
+                GROUP BY asp.financial_product_name, c.financial_company_name
+                ORDER BY uvh.view_date_time DESC";
 
     $res = mysqli_query($con, $query);
     $result = array();
 
 
     while($row = mysqli_fetch_array($res)) {
-        array_push($result, array('fin_prdt_nm'=>$row[0], 'fin_prdt_cd'=>$row[1], 'kor_co_nm'=>$row[2],
-        'avg_prft_rate'=>$row[3], 'pnsn_kind_nm'=>$row[4]));
+        array_push($result, array('financial_product_name'=>$row[0], 'financial_product_id'=>$row[1], 'financial_company_name'=>$row[2],
+        'average_profit_rate'=>$row[3], 'pension_type_name'=>$row[4]));
     }
 }
 else if($prdtNum == 4) {
-    $query = "SELECT lp1.fin_prdt_nm, lpo1.opt_num, c.kor_co_nm, lpo1.lend_rate_min, lpo1.lend_rate_type_nm, lpo1.rpay_type_nm
-                FROM rentHouseLoanProductsOptions lpo1
-                JOIN rentHouseLoanProducts lp1 ON lpo1.fin_prdt_cd = lp1.fin_prdt_cd
-                JOIN company c ON lp1.fin_co_no = c.fin_co_no
-                JOIN userViewHistory uvh ON 
-                    lpo1.opt_num = SUBSTRING_INDEX(SUBSTRING(uvh.fin_prdt_num_cd, 3), '_', 1)
-                WHERE LEFT(uvh.fin_prdt_num_cd, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
-                GROUP BY lp1.fin_prdt_nm, c.kor_co_nm
-                ORDER BY uvh.viewDateTime DESC";
+    $query = "SELECT lp1.financial_product_name, lpo1.option_id, c.financial_company_name, lpo1.minimum_loan_rate, lpo1.loan_rate_type, lpo1.loan_repayment_type
+                FROM rent_house_loan_product_options lpo1
+                JOIN rent_house_loan_products lp1 ON lpo1.financial_product_id = lp1.financial_product_id
+                JOIN financial_companies c ON lp1.financial_company_id = c.financial_company_id
+                JOIN user_view_histories uvh ON 
+                    lpo1.option_id = SUBSTRING_INDEX(SUBSTRING(uvh.history_id, 3), '_', 1)
+                WHERE LEFT(uvh.history_id, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
+                GROUP BY lp1.financial_product_name, c.financial_company_name
+                ORDER BY uvh.view_date_time DESC";
 
     $res = mysqli_query($con, $query);
     $result = array();
 
 
     while($row = mysqli_fetch_array($res)) {
-        array_push($result, array('fin_prdt_nm'=>$row[0], 'opt_num'=>$row[1], 'kor_co_nm'=>$row[2],
-        'lend_rate_min'=>$row[3], 'lend_rate_type_nm'=>$row[4], 'rpay_type_nm'=>$row[5]));
+        array_push($result, array('financial_product_name'=>$row[0], 'option_id'=>$row[1], 'financial_company_name'=>$row[2],
+        'minimum_loan_rate'=>$row[3], 'loan_rate_type'=>$row[4], 'loan_repayment_type'=>$row[5]));
     }
 }
 else if($prdtNum == 5) {
-    $query = "SELECT lp2.fin_prdt_nm, lpo2.opt_num, c.kor_co_nm, lpo2.lend_rate_min, lpo2.lend_rate_type_nm, lpo2.rpay_type_nm
-                FROM mortgageLoanProductsOptions lpo2
-                JOIN mortgageLoanProducts lp2 ON lpo2.fin_prdt_cd = lp2.fin_prdt_cd
-                JOIN company c ON lp2.fin_co_no = c.fin_co_no
-                JOIN userViewHistory uvh ON 
-                    lpo2.opt_num = SUBSTRING_INDEX(SUBSTRING(uvh.fin_prdt_num_cd, 3), '_', 1)
-                WHERE LEFT(uvh.fin_prdt_num_cd, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
-                GROUP BY lp2.fin_prdt_nm, c.kor_co_nm
-                ORDER BY uvh.viewDateTime DESC";
+    $query = "SELECT lp2.financial_product_name, lpo2.option_id, c.financial_company_name, lpo2.minimum_loan_rate, lpo2.loan_rate_type, lpo2.loan_repayment_type
+                FROM mortgage_loan_product_options lpo2
+                JOIN mortgage_loan_products lp2 ON lpo2.financial_product_id = lp2.financial_product_id
+                JOIN financial_companies c ON lp2.financial_company_id = c.financial_company_id
+                JOIN user_view_histories uvh ON 
+                    lpo2.option_id = SUBSTRING_INDEX(SUBSTRING(uvh.history_id, 3), '_', 1)
+                WHERE LEFT(uvh.history_id, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
+                GROUP BY lp2.financial_product_name, c.financial_company_name
+                ORDER BY uvh.view_date_time DESC";
 
     $res = mysqli_query($con, $query);
     $result = array();
 
 
     while($row = mysqli_fetch_array($res)) {
-        array_push($result, array('fin_prdt_nm'=>$row[0], 'opt_num'=>$row[1], 'kor_co_nm'=>$row[2],
-        'lend_rate_min'=>$row[3], 'lend_rate_type_nm'=>$row[4], 'rpay_type_nm'=>$row[5]));
+        array_push($result, array('financial_product_name'=>$row[0], 'option_id'=>$row[1], 'financial_company_name'=>$row[2],
+        'minimum_loan_rate'=>$row[3], 'loan_rate_type'=>$row[4], 'loan_repayment_type'=>$row[5]));
     }
 }
 else  {
-    $query = "SELECT lp3.fin_prdt_nm, lpo3.opt_num, c.kor_co_nm, lp3.crdt_prdt_type_nm, LEAST(MIN(COALESCE(crdt_grad_1, 100)), MIN(COALESCE(crdt_grad_4, 100)), MIN(COALESCE(crdt_grad_5, 100)), 
-                MIN(COALESCE(crdt_grad_6, 100)), MIN(COALESCE(crdt_grad_10, 100)), MIN(COALESCE(crdt_grad_11, 100)), MIN(COALESCE(crdt_grad_12, 100)), MIN(COALESCE(crdt_grad_13, 100))) AS lend_rate_min
-                FROM creditLoanProductsOptions lpo3
-                JOIN creditLoanProducts lp3 ON lpo3.fin_prdt_cd = lp3.fin_prdt_cd
-                JOIN company c ON lp3.fin_co_no = c.fin_co_no
-                JOIN userViewHistory uvh ON 
-                    lpo3.opt_num = SUBSTRING_INDEX(SUBSTRING(uvh.fin_prdt_num_cd, 3), '_', 1)
-                WHERE LEFT(uvh.fin_prdt_num_cd, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
-                GROUP BY lp3.fin_prdt_nm, c.kor_co_nm, lpo3.crdt_lend_rate_type_nm
-                ORDER BY uvh.viewDateTime DESC";
+    $query = "SELECT lp3.financial_product_name, lpo3.option_id, c.financial_company_name, lp3.credit_product_type_name, LEAST(MIN(COALESCE(credit_score_above_900, 100)), MIN(COALESCE(credit_score_801_to_900, 100)), MIN(COALESCE(credit_score_701_to_800, 100)), 
+                MIN(COALESCE(credit_score_601_to_700, 100)), MIN(COALESCE(credit_score_501_to_600, 100)), MIN(COALESCE(credit_score_401_to_500, 100)), MIN(COALESCE(credit_score_301_to_400, 100)), MIN(COALESCE(credit_score_below_300, 100))) AS lowest_loan_rate
+                FROM credit_loan_product_options lpo3
+                JOIN credit_loan_products lp3 ON lpo3.financial_product_id = lp3.financial_product_id
+                JOIN financial_companies c ON lp3.financial_company_id = c.financial_company_id
+                JOIN user_view_histories uvh ON 
+                    lpo3.option_id = SUBSTRING_INDEX(SUBSTRING(uvh.history_id, 3), '_', 1)
+                WHERE LEFT(uvh.history_id, 1) = '$prdtNum' AND uvh.aaid = '$aaid'
+                GROUP BY lp3.financial_product_name, c.financial_company_name, lpo3.credit_loan_rate_type_name
+                ORDER BY uvh.view_date_time DESC";
 
     $res = mysqli_query($con, $query);
     $result = array();
 
 
     while($row = mysqli_fetch_array($res)) {
-        array_push($result, array('fin_prdt_nm'=>$row[0], 'opt_num'=>$row[1], 'kor_co_nm'=>$row[2],
-        'crdt_prdt_type_nm'=>$row[3], 'lend_rate_min'=>$row[4]));
+        array_push($result, array('financial_product_name'=>$row[0], 'option_id'=>$row[1], 'financial_company_name'=>$row[2],
+        'credit_product_type_name'=>$row[3], 'lowest_loan_rate'=>$row[4]));
     }
 }
 

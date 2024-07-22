@@ -7,43 +7,43 @@ if(!$con || mysqli_connect_errno()) {
 
 mysqli_set_charset($con,"utf8");
 
-@$a = $_GET['a'];
-@$b = $_GET['b'];
-@$c = $_GET['c'];
+@$sp1 = $_GET['sp1'];   // spinner 1, 2, 3
+@$sp2 = $_GET['sp2'];
+@$sp3 = $_GET['sp3'];
 
-$query = "SELECT sp.fin_prdt_nm, sp.fin_prdt_cd, c.kor_co_nm, MAX(spo.intr_rate2) AS highest_intr_rate, spo.intr_rate_type, spo.rsrv_type
-          FROM savingproducts sp
-          JOIN company c ON sp.fin_co_no = c.fin_co_no
-          JOIN savingproductsoptions spo ON sp.fin_prdt_cd = spo.fin_prdt_cd";
+$query = "SELECT sp.financial_product_name, sp.financial_product_id, c.financial_company_name, MAX(spo.maximum_interest_rate) AS highest_interest_rate, spo.interest_rate_type, spo.accrual_type
+          FROM savings_products sp
+          JOIN financial_companies c ON sp.financial_company_id = c.financial_company_id
+          JOIN savings_product_options spo ON sp.financial_product_id = spo.financial_product_id";
 
-if ($a == 1) {
-    $query .= " WHERE c.topFinGrpNo = '020000'";
-} elseif ($a == 2) {
-    $query .= " WHERE c.topFinGrpNo != '020000'";
+if ($sp1 == 1) {
+    $query .= " WHERE c.region_code = '020000'";
+} elseif ($sp1 == 2) {
+    $query .= " WHERE c.region_code != '020000'";
 }
 
-if ($b == 1) {
-    $query .= ($a == 1 || $a == 2) ? " AND spo.intr_rate_type_nm = '단리'" : " WHERE spo.intr_rate_type_nm = '단리'";
-} elseif ($b == 2) {
-    $query .= ($a == 1 || $a == 2) ? " AND spo.intr_rate_type_nm = '복리'" : " WHERE spo.intr_rate_type_nm = '복리'";
+if ($sp2 == 1) {
+    $query .= ($sp1 == 1 || $sp1 == 2) ? " AND spo.interest_rate_type_name = '단리'" : " WHERE spo.interest_rate_type_name = '단리'";
+} elseif ($sp2 == 2) {
+    $query .= ($sp1 == 1 || $sp1 == 2) ? " AND spo.interest_rate_type_name = '복리'" : " WHERE spo.interest_rate_type_name = '복리'";
 }
 
-if ($c == 1) {
-    $query .= ($a == 1 || $a == 2 || $b == 1 || $b == 2) ? " AND spo.rsrv_type_nm = '자유적립식'" : " WHERE spo.rsrv_type_nm = '자유적립식'";
-} elseif ($c == 2) {
-    $query .= ($a == 1 || $a == 2 || $b == 1 || $b == 2) ? " AND spo.rsrv_type_nm = '정액적립식'" : " WHERE spo.rsrv_type_nm = '정액적립식'";
+if ($sp3 == 1) {
+    $query .= ($sp1 == 1 || $sp1 == 2 || $sp2 == 1 || $sp2 == 2) ? " AND spo.accrual_type_name = '자유적립식'" : " WHERE spo.accrual_type_name = '자유적립식'";
+} elseif ($sp3 == 2) {
+    $query .= ($sp1 == 1 || $sp1 == 2 || $sp2 == 1 || $sp2 == 2) ? " AND spo.accrual_type_name = '정액적립식'" : " WHERE spo.accrual_type_name = '정액적립식'";
 }
 
-$query .= " GROUP BY sp.fin_prdt_nm, c.kor_co_nm, spo.intr_rate_type, spo.rsrv_type
-            ORDER BY highest_intr_rate DESC";
+$query .= " GROUP BY sp.financial_product_name, c.financial_company_name, spo.interest_rate_type, spo.accrual_type
+            ORDER BY highest_interest_rate DESC";
 
 $res = mysqli_query($con, $query);
 $result = array();
 
 
 while($row = mysqli_fetch_array($res)) {
-    array_push($result, array('fin_prdt_nm'=>$row[0], 'fin_prdt_cd'=>$row[1], 'kor_co_nm'=>$row[2],
-    'highest_intr_rate'=>$row[3], 'intr_rate_type'=>$row[4], 'rsrv_type'=>$row[5]));
+    array_push($result, array('financial_product_name'=>$row[0], 'financial_product_id'=>$row[1], 'financial_company_name'=>$row[2],
+    'highest_interest_rate'=>$row[3], 'interest_rate_type'=>$row[4], 'accrual_type'=>$row[5]));
 }
 
 echo json_encode(array("result"=>$result), JSON_UNESCAPED_UNICODE);

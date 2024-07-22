@@ -7,12 +7,13 @@ if(!$con || mysqli_connect_errno()) {
 
 mysqli_set_charset($con,"utf8");
 
-$query = "SELECT COUNT(*) AS cnt FROM userinfo_history";
+// aaid 받아와서 정보들 null 아닌지 check
+$query = "SELECT COUNT(*) AS count FROM user_information";
 
 $res = mysqli_query($con, $query);
 
 if ($row = mysqli_fetch_assoc($res)) {
-    $cnt = $row["cnt"];
+    $cnt = $row["count"];
     echo $cnt;              
     // 결과를 숫자로 직접 출력
 }

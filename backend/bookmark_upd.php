@@ -9,17 +9,17 @@ mysqli_set_charset($con,"utf8");
 
 // @ 붙이면 warning 사라짐
 @$prdtNum = $_GET['prdtNum'];
-@$finPrdtCd = $_GET['finPrdtCd'];   // 대출 종류는 opt_num을 가져옴
+@$financial_product_id = $_GET['finPrdtId'];   // 대출 종류는 opt_num을 가져옴
 @$opts = $_GET['opts'];
 @$aaid = $_GET['aaid'];
 @$mark = $_GET['mark'];
 
-// fin_prdt_num_cd 생성 [option이 여러 개면 붙여서 보내야 함]
-$fin_prdt_num_cd = $prdtNum . '_' . $finPrdtCd . '_' . $opts;
+// bookmark_id 생성 [option이 여러 개면 붙여서 보내야 함]
+$bookmark_id = $prdtNum . '_' . $financial_product_id . '_' . $opts;
 
 if ($mark === "true") {
-    // mark가 true인 경우 userBookmark 테이블에서 해당 데이터 삭제
-    $query = "DELETE FROM userBookmark WHERE fin_prdt_num_cd = '$fin_prdt_num_cd'";
+    // mark가 true인 경우 user_bookmarks 테이블에서 해당 데이터 삭제
+    $query = "DELETE FROM user_bookmarks WHERE bookmark_id = '$bookmark_id'";
     
     if (mysqli_query($con, $query)) {
         echo "Record deleted successfully";
@@ -30,28 +30,28 @@ if ($mark === "true") {
 else {
     switch ($prdtNum) {
         case 1:
-            $query = "INSERT INTO userBookmark (fin_prdt_num_cd, aaid, fin_prdt_cd_deposit) 
-                   VALUES ('$fin_prdt_num_cd', '$aaid', '$finPrdtCd')";
+            $query = "INSERT INTO user_bookmarks (bookmark_id, aaid, financial_product_id_deposit) 
+                   VALUES ('$bookmark_id', '$aaid', '$financial_product_id')";
             break;
         case 2:
-            $query = "INSERT INTO userBookmark (fin_prdt_num_cd, aaid, fin_prdt_cd_saving) 
-                    VALUES ('$fin_prdt_num_cd', '$aaid', '$finPrdtCd')";
+            $query = "INSERT INTO user_bookmarks (bookmark_id, aaid, financial_product_id_saving) 
+                    VALUES ('$bookmark_id', '$aaid', '$financial_product_id')";
             break;
         case 3:
-            $query = "INSERT INTO userBookmark (fin_prdt_num_cd, aaid, fin_prdt_cd_annuity) 
-                    VALUES ('$fin_prdt_num_cd', '$aaid', '$finPrdtCd')";
+            $query = "INSERT INTO user_bookmarks (bookmark_id, aaid, financial_product_id_annuity) 
+                    VALUES ('$bookmark_id', '$aaid', '$financial_product_id')";
             break;
         case 4:
-            $query = "INSERT INTO userBookmark (fin_prdt_num_cd, aaid, opt_num_rentHouse) 
-                    VALUES ('$fin_prdt_num_cd', '$aaid', '$finPrdtCd')";
+            $query = "INSERT INTO user_bookmarks (bookmark_id, aaid, option_id_rent_house_loan) 
+                    VALUES ('$bookmark_id', '$aaid', '$financial_product_id')";
             break;
         case 5:
-            $query = "INSERT INTO userBookmark (fin_prdt_num_cd, aaid, opt_num_mortgage) 
-                    VALUES ('$fin_prdt_num_cd', '$aaid', '$finPrdtCd')";
+            $query = "INSERT INTO user_bookmarks (bookmark_id, aaid, option_id_mortgage_loan) 
+                    VALUES ('$bookmark_id', '$aaid', '$financial_product_id')";
             break;
         case 6:
-            $query = "INSERT INTO userBookmark (fin_prdt_num_cd, aaid, opt_num_credit) 
-                    VALUES ('$fin_prdt_num_cd', '$aaid', '$finPrdtCd')";
+            $query = "INSERT INTO user_bookmarks (bookmark_id, aaid, option_id_credit_loan) 
+                    VALUES ('$bookmark_id', '$aaid', '$financial_product_id')";
             break;
         default:
             echo "Invalid prdtNum";

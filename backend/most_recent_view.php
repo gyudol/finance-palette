@@ -8,13 +8,13 @@ if(!$con || mysqli_connect_errno()) {
 mysqli_set_charset($con,"utf8");
 
 // @ 붙이면 warning 사라짐
-@$fin_prdt_num_cd = $_GET['fin_prdt_num_cd'];
+@$history_id = $_GET['historyId'];
 @$aaid = $_GET['aaid'];
 
-// 해당 fin_prdt_num_cd의 데이터 존재 여부 확인
-$result = mysqli_query($con, "SELECT LEFT(fin_prdt_num_cd, 1) AS first_digit, COUNT(*) AS count 
-          FROM userViewHistory
-          WHERE aaid = '$aaid' AND LEFT(fin_prdt_num_cd, 1) IN ('1', '2', '3', '4', '5', '6') 
+// 해당 history_id의 데이터 존재 여부 확인
+$result = mysqli_query($con, "SELECT LEFT(history_id, 1) AS first_digit, COUNT(*) AS count 
+          FROM user_view_histories
+          WHERE aaid = '$aaid' AND LEFT(history_id, 1) IN ('1', '2', '3', '4', '5', '6') 
           GROUP BY first_digit 
           ORDER BY count DESC 
           LIMIT 1;");

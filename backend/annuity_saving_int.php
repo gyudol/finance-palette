@@ -8,25 +8,25 @@ if(!$con || mysqli_connect_errno()) {
 mysqli_set_charset($con,"utf8");
 
 // EditText로 원하는 값 가져오기
-@$fin_prdt_cd = $_GET['finPrdtCd'];
+@$financial_product_id = $_GET['finPrdtId'];
 
 
 $res = mysqli_query($con, "SELECT 
-asp.fin_prdt_nm, asp.pnsn_kind_nm, asp.prdt_type_nm, asp.avg_prft_rate, asp.btrm_prft_rate_1, asp.btrm_prft_rate_2, asp.btrm_prft_rate_3, 
-asp.sale_strt_day, asp.join_way, asp.sale_co, asp.etc, asp.mntn_cnt, asp.dcls_rate, asp.guar_rate,
-co.kor_co_nm, co.dcls_chrg_man,
-CONCAT(asp.dcls_strt_day, IFNULL(CONCAT(' ~ ', asp.dcls_end_day), ' ~ ')) AS dcls_strt_end_day
-FROM annuitysavingproducts asp 
-JOIN company co ON asp.fin_co_no = co.fin_co_no 
-WHERE asp.fin_prdt_cd = '$fin_prdt_cd';");
+asp.financial_product_name, asp.pension_type_name, asp.product_type_name, asp.average_profit_rate, asp.past_profit_rate_1, asp.past_profit_rate_2, asp.past_profit_rate_3, 
+asp.sale_start_date, asp.join_way, asp.sales_company, asp.remarks, asp.maintenance_count, asp.disclosure_interest_rate, asp.guaranteed_interest_rate,
+co.financial_company_name, co.disclosure_officer,
+CONCAT(asp.disclosure_start_date, IFNULL(CONCAT(' ~ ', asp.disclosure_end_date), ' ~ ')) AS disclosure_start_to_end_date
+FROM annuity_saving_products asp 
+JOIN financial_companies co ON asp.financial_company_id = co.financial_company_id 
+WHERE asp.financial_product_id = '$financial_product_id';");
 
 
 $result = array();
 
 while($row = mysqli_fetch_array($res)) {
-    array_push($result, array('fin_prdt_nm'=>$row[0], 'pnsn_kind_nm'=>$row[1], 'prdt_type_nm'=>$row[2], 'avg_prft_rate'=>$row[3], 'btrm_prft_rate_1'=>$row[4], 
-    'btrm_prft_rate_2'=>$row[5], 'btrm_prft_rate_3'=>$row[6], 'sale_strt_day'=>$row[7], 'join_way'=>$row[8], 'sale_co'=>$row[9], 'etc'=>$row[10],
-    'mntn_cnt'=>$row[11], 'dcls_rate'=>$row[12], 'guar_rate'=>$row[13], 'kor_co_nm'=>$row[14], 'dcls_chrg_man'=>$row[15], 'dcls_strt_end_day'=>$row[16]));
+    array_push($result, array('financial_product_name'=>$row[0], 'pension_type_name'=>$row[1], 'product_type_name'=>$row[2], 'average_profit_rate'=>$row[3], 'past_profit_rate_1'=>$row[4], 
+    'past_profit_rate_2'=>$row[5], 'past_profit_rate_3'=>$row[6], 'sale_start_date'=>$row[7], 'join_way'=>$row[8], 'sales_company'=>$row[9], 'remarks'=>$row[10],
+    'maintenance_count'=>$row[11], 'disclosure_interest_rate'=>$row[12], 'guaranteed_interest_rate'=>$row[13], 'financial_company_name'=>$row[14], 'disclosure_officer'=>$row[15], 'disclosure_start_to_end_date'=>$row[16]));
 }
 
 echo json_encode(array("result"=>$result), JSON_UNESCAPED_UNICODE);
