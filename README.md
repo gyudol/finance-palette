@@ -60,7 +60,7 @@
   <tbody align="center"> 
     <tr> <th> 홈 화면 </th> <th> 메뉴 화면 </th> <th> 마이 페이지 </th> <th> 사전 조사 화면 </th> </tr>
     <tr>  <td width="25%"><img width="100%" src="./readme-assets/home_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/menu_screen.png"/></td> 
-      <td width="25%"><img width="100%" src="./readme-assets/myPage_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/survey_screen.png"/></td> </tr>
+      <td width="25%"><img width="100%" src="./readme-assets/my_page_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/survey_screen.png"/></td> </tr>
     <tr> <th> 북마크 리스트 화면 </th> <th> 최근 조회 기록 화면 </th> <th> 정기예금 상품<br>리스트 페이지 </th> <th> 적금 상품<br>리스트 페이지 </th> </tr>
     <tr> <td width="25%"><img width="100%" src="./readme-assets/bookmark_list_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/user_view_history_list_screen.png"/></td>
       <td width="25%"><img width="100%" src="./readme-assets/deposit_product_list_screen.png"/></td> <td width="25%"><img width="100%" src="./readme-assets/saving_product_list_screen.png"/></td> </tr>
@@ -87,6 +87,7 @@
 
 - 상품 데이터 분석을 통해 데이터를 분류하여 **사용자가 원하는 정보를 직접 필터링할 수 있도록** 구성 <br>
 - 정기예금 및 적금 상품은 **최고 우대금리 기준 내림차순**으로, 연금저축 상품은 **연평균 수익률 기준 내림차순**으로, 대출 상품은 **최저 대출금리 기준 오름차순**으로 배치 <br>
+- 상품 상세 페이지 하단의 공식 홈페이지 버튼을 통해 해당 금융기관의 공식 홈페이지로 이동
 - 사용자가 상품 상세 페이지를 확인한 후 다시 상품 리스트 화면으로 돌아왔을 때, 이전에 설정한 필터가 유지되어 화면에 보여지며, 리스트의 스크롤 위치를 방금 조회한 상품에 배치하여 **사용자 편의성을 향상**
 
 <div align="center"> 
@@ -107,8 +108,8 @@
 
 - 상품 상세 페이지 우상단의 별 아이콘을 클릭하여 북마크를 등록 및 해제
 - 북마크 리스트 페이지는 북마크된 상품이 하나도 없으면 접근할 수 없도록 설정
-- 북마크 리스트 페이지는 접속 시 북마크가 가장 많은 종류의 상품 리스트를, 최근 조회 기록 페이지는 조회 기록이 가장 많은 종류의 상품 리스트를 우선적으로 표시하도록 구성
-- 조회 기록 데이터는 사용자가 상품 상세 페이지에 접근할 때 추가되거나 수정되며, 조회 기록 페이지에서 사용자의 조회 시간 기준 내림차순으로 배치
+- 북마크 리스트 페이지는 접속 시 **북마크가 가장 많은 종류의 상품 리스트**를, 최근 조회 기록 페이지는 **가장 최근에 조회한 종류의 상품 리스트**를 우선적으로 표시하도록 구성
+- 조회 기록 데이터는 사용자가 상품 상세 페이지에 접근할 때 추가되거나 수정되며, 조회 기록 페이지에서 사용자의 **조회 시간 기준 내림차순**으로 배치
 - 최근 조회 기록은 종류별로 최대 50개의 상품만 보관하며, 50개를 초과할 경우 가장 오래된 조회 기록을 삭제
 
 <div align="center"> 
