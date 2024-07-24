@@ -9,10 +9,8 @@ mysqli_set_charset($con,"utf8");
 
 // EditText로 원하는 값 가져오기
 @$option_id = $_GET['optionId'];
-clpo
 
-$res = mysqli_query($con, "SELECT 
-clpo.credit_score_above_900, clpo.credit_score_801_to_900, clpo.credit_score_701_to_800, clpo.credit_score_601_to_700, 
+$res = mysqli_query($con, "SELECT clpo.credit_score_above_900, clpo.credit_score_801_to_900, clpo.credit_score_701_to_800, clpo.credit_score_601_to_700, 
 clpo.credit_score_501_to_600, clpo.credit_score_401_to_500, clpo.credit_score_301_to_400, clpo.credit_score_below_300
 FROM credit_loan_product_options clpo
 WHERE clpo.option_id = '$option_id';");
