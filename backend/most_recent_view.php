@@ -12,17 +12,16 @@ mysqli_set_charset($con,"utf8");
 @$aaid = $_GET['aaid'];
 
 // 해당 history_id의 데이터 존재 여부 확인
-$result = mysqli_query($con, "SELECT LEFT(history_id, 1) AS first_digit, COUNT(*) AS count 
+$result = mysqli_query($con, "SELECT LEFT(history_id, 1) AS product_number
           FROM user_view_histories
-          WHERE aaid = '$aaid' AND LEFT(history_id, 1) IN ('1', '2', '3', '4', '5', '6') 
-          GROUP BY first_digit 
-          ORDER BY count DESC 
+          WHERE aaid = '$aaid'
+          ORDER BY view_date_time DESC 
           LIMIT 1;");
 
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $most_frequent_digit = $row['first_digit'];
-    echo "$most_frequent_digit";
+    $most_recent_view = $row['product_number'];
+    echo "$most_recent_view";
 } else echo "0";    // echo 0이면, toast Message
 
 mysqli_close($con);
