@@ -19,7 +19,7 @@
   <tr> <td rowspan="4"><a href="https://github.com/gyudol" target="_blank">김규찬</a></td> <td rowspan="4">팀장</td> <td colSpan="2"><strong>프로젝트 기획 및 관리</strong></td> </tr>
   <tr> <td><strong>Backend 100%</strong></td> <td><sub>Apache 서버·DB 설계 및 구축, 데이터 정제·분석·가공,<br> 사전 조사 도메인, 상품 도메인 (필터링, 상세 조회) × 6, AAID 도메인,<br> 
     북마크 도메인, 조회 기록 도메인</sub></td> </tr>
-  <tr> <td><strong>Frontend 80%</strong></td> <td><sub>상품 리스트 페이지 × 6, 상품 상세 페이지 × 6, 사전 조사 화면<br> 북마크 리스트 화면, 최근 조회 기록 화면</sub></td> </tr>
+  <tr> <td><strong>Frontend 80%</strong></td> <td><sub>상품 리스트 페이지 × 6, 상품 상세 페이지 × 6, 사전 조사 화면,<br> 북마크 리스트 화면, 최근 조회 기록 화면</sub></td> </tr>
   <tr> <td><strong>Design 10%</strong></td> <td><sub>북마크 리스트 화면, 최근 조회 기록 화면</sub></td> </tr>
   <tr> <td rowspan="2">김보민</td> <td rowspan="2">팀원</td> <td><strong>Design 90%</strong></td> <td><sub>홈 화면, 메뉴 화면, 마이 페이지, 사전 조사 화면, 로고 이미지,<br>
     상품 리스트 페이지 × 6, 상품 상세 페이지 × 6</sub></td> </tr>
