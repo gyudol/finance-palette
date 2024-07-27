@@ -27,7 +27,7 @@ if ($sp2 == 1) {
 } elseif ($sp2 == 2) {
     $query .= ($sp1 == 1 || $sp1 == 2) ? " AND clp.credit_product_type_name = '마이너스한도대출'" : " WHERE clp.credit_product_type_name = '마이너스한도대출'";
 } elseif ($sp2 == 3) {
-    $query .= ($sp1 == 1 || $sp1 == 2) ? " AND clp.credit_product_type_name = '장기카드대출'" : " WHERE clp.credit_product_type_name = '장기카드대출'";
+    $query .= ($sp1 == 1 || $sp1 == 2) ? " AND clp.credit_product_type_name = '장기카드대출(카드론)'" : " WHERE clp.credit_product_type_name = '장기카드대출(카드론)'";
 }
 
 $query .= " GROUP BY clp.financial_product_name, c.financial_company_name, clpo.credit_loan_rate_type_name
