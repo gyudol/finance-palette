@@ -43,7 +43,7 @@
 </div>
 
 - **Language |** Java 8 (Java 1.8), XML, PHP 8.2.12 <br>
-- **Server |** Apache 2.4.58 <br>
+- **Server |** Apache HTTP Server 2.4.58 <br>
 - **Library |** 'mysql-connector-j-8.2.0', 'com.google.android.gms:play-services-ads-identifier:18.0.1' <br>
 - **DB |** MySQL 8.0.15 <br>
 - **IDE |** Android Studio Giraffe 2022.3.1 Patch 2, IntelliJ IDEA 2022.2.2 Community Edition, phpMyAdmin 5.2.1 <br>
