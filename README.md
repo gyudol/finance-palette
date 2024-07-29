@@ -1,6 +1,6 @@
 # 🎨금융팔레트 FinancePalette
-금융감독원에 등록된 140여 개 금융 기관의 모든 금융 상품을 비교! <br>
-국내 제1·2금융권이 판매 중인 1,300개 이상의 다양한 금융 상품을 비교해서 보여줌으로써, 사용자의 더 나은 금융 결정을 도와드립니다.
+금융감독원에 등록된 140여 개 금융기관의 모든 금융상품을 비교! <br>
+국내 제1·2금융권이 판매 중인 1,300개 이상의 다양한 금융상품을 비교해서 보여줌으로써, 사용자의 더 나은 금융 결정을 도와드립니다.
 <!-- 사용자의 연령대, 목표 및 선호도 등을 고려하여 최적의 금융 상품을 추천함으로써 더 나은 금융 결정을 도와드립니다. -->
 
 - **개발 기간** : 2023.12. ~ 2023.12. (4주)
@@ -37,6 +37,7 @@
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white) <br>
 ![Android Studio](https://img.shields.io/badge/android%20studio-346ac1?style=for-the-badge&logo=android%20studio&logoColor=white)
+![phpmyadmin](https://img.shields.io/badge/phpmyadmin-6C78AF?style=for-the-badge&logo=phpmyadmin&logoColor=white)
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) <br>
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
