@@ -127,5 +127,5 @@
 - <h3>ERD</h3>
 <div align="center">
   
-<img src="./readme-assets/ERD_image.png"/>
+<img src="./readme-assets/erd_image.png"/>
 </div>
